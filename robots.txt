@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ylove.github.io/sitemap.xml

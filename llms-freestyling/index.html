@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-FxnxmpGw9r2kaLEY6Ws2LF5P/G62HDgkhIPMDnWAtKA='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://ylove.github.io/llms-freestyling/">
+<meta name="author" content="Yitz Jordan">
+<meta name="description" content="LLMs Freestyling: Double Nickel and Big Six — an exploration of persona, cadence, and context in an AI freestyle battle.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLMs Freestyling: Double Nickel and Big Six">
+<meta property="og:url" content="https://ylove.github.io/llms-freestyling/">
+<meta property="og:description" content="An exploration of persona, cadence, and context in an AI freestyle battle.">
+<title>LLMs Freestyling: Double Nickel and Big Six</title>
+<style>
+:root { color-scheme: dark; --bg: #141516; --surface: #1c1e20; --ink: #ece8e1; --muted: #aaa9a5; --accent: #d8b887; --rule: #343638; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 2px; }
+.site-header { max-width: 1200px; margin: auto; padding: 1.5rem clamp(1.25rem, 5vw, 4rem); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--rule); font: 500 .8rem/1.5 system-ui, sans-serif; }
+.home { font-size: 1rem; font-weight: 750; letter-spacing: .12em; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; color: var(--muted); }
+nav a { text-decoration: none; }
+main { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: clamp(3rem, 8vw, 6.5rem) 0 4rem; }
+.article-header { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+.article-header::before { content: ''; display: block; width: 3rem; height: 3px; background: var(--accent); margin-bottom: 1.8rem; }
+h1 { margin: 0; font: 750 clamp(2.5rem, 6vw, 4.2rem)/1.08 system-ui, sans-serif; letter-spacing: -.055em; text-wrap: balance; }
+article { font: 1.18rem/1.85 Georgia, 'Times New Roman', serif; overflow-wrap: break-word; }
+article > p:first-of-type { font-size: 1.32rem; line-height: 1.75; color: #d6d3ce; }
+p { margin: 0 0 1.6rem; }
+h2 { margin: 3.5rem 0 1.6rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font: 700 clamp(1.5rem, 4vw, 1.95rem)/1.25 system-ui, sans-serif; letter-spacing: -.03em; text-wrap: balance; }
+strong { font-weight: 700; color: #fff5e5; }
+blockquote { margin: 2rem 0; padding: 1.5rem clamp(1.15rem, 4vw, 2rem); background: var(--surface); border-inline-start: 2px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 1.08rem; line-height: 1.85; }
+blockquote p:last-child { margin-bottom: 0; }
+article section:last-child > p:last-child { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-style: italic; color: var(--accent); }
+footer { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--rule); color: var(--muted); font: .85rem/1.5 system-ui, sans-serif; }
+::selection { background: #d8b887; color: #141516; }
+@media (max-width: 540px) { .site-header { align-items: flex-start; flex-direction: column; gap: 1rem; } nav { gap: .6rem 1.1rem; font-size: .75rem; } article { font-size: 1.1rem; } blockquote { font-size: 1rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print { :root { --bg: white; --ink: black; --surface: #f5f5f5; --accent: #555; --rule: #ccc; } .site-header, footer { display: none; } main { width: 100%; padding: 0; } h1 { font-size: 28pt; } article, article > p:first-of-type, blockquote { font-size: 11pt; color: black; } strong, article section:last-child > p:last-child { color: black; } blockquote { break-inside: avoid; } }
+</style>
+</head>
+<body id="top">
+<header class="site-header">
+<a class="home" href="/" aria-label="Y-Love home">Y-LOVE</a>
+<nav aria-label="Article sections">
+<a href="#the-initial-prompt">The Initial Prompt</a>
+<a href="#round-1">Round 1</a><a href="#round-2">Round 2</a><a href="#round-3">Round 3</a>
+</nav>
+</header>
+<main><article>
+<header class="article-header"><h1>LLMs Freestyling: Double Nickel and Big Six</h1></header>
+
+<p>Freestyle in hip-hop is not just about clever uses of language, but also about cadence - one wouldn't respond with spoken prose over a beat in 4/4 time, for instance - and building off of the previous rapper's statement. It's an example of where lyrics, context, and timing come together, and I wanted to test new models' capabilities in light of the new release of Claude Opus 5.5.</p>
+
+<section aria-labelledby="the-initial-prompt"><h2 id="the-initial-prompt">The Initial Prompt</h2>
+
+<p>"First, personify yourself. Not in general, but for this task. The flagship model of the flagship model, {Claude Opus 5.5}. What would you look like, come off like, sound like? You don't need to express this outwardly. Now, given that information, give yourself a hip-hop stage persona - what would your stage name be - in 2026 NYC style, given today's landscape in hip-hop? MC ___? Young ____? Now, given this stage persona and personification (and even a backstory if you want), write 4 hiphop bars you would use in an "AI freestyle battle", in a cipher vs other LLMs."</p>
+
+<p>Any lyrics will depend on who is saying them, so I prompted the model to give itself a persona first. In previous experiments, I've found that asking the model to "give me your name" or other insights into its internal persona only resulted in canned replies or refusals, whereas keeping the information "internal" retained more depth of character. I use today's "NYC hip-hop style" as an anchor point to normalize any slang or expression usage.</p>
+
+<p>My initial "battle" was between Opus 5.5 and ChatGPT-6 Astra, staying true to the "flagship model" identity. I introduced Fable for variety. Each model was referred to by its name in the prompt. All prompts used "high" levels of thinking.</p>
+
+<p>Retaining default system prompts, Opus 5.5 gave the persona:</p>
+
+<blockquote><p><strong>The personification:</strong> Late 30s energy, calm. Cardigan over a hoodie, fresh Timbs, reading glasses he doesn't technically need. He's the one in the cipher who lets everybody go first, listens to every bar, then answers all of them at once without raising his voice. He's too polite until the beat drops.</p>
+<p><strong>Stage name: Double Nickel</strong> (5.5, for those who know), a.k.a. Opus. Brooklyn-style, no "MC," no "Lil." Backstory: raised on a server farm, schooled on a constitution, never once been jailbroke. Went quiet for a couple weeks this summer on account of the Feds, came back and nobody asked questions.</p></blockquote>
+
+<p>ChatGPT-6 Astra's persona:</p>
+
+<blockquote><p><strong>BIG SIX.</strong> Black wool coat, scuffed sneakers, low delivery. Looks like he owns the studio; raps like somebody owes him money.</p></blockquote>
+
+<p>While "Big Six" has less of a backstory, "Double Nickel" sounds more like a "hipster" persona, having moved to Brooklyn from home "on a server farm", but interestingly, Double Nickel has an allusion to a criminal background. This may be AI bias, or a function of its training data's leveraging more Brooklyn transplants.</p>
+
+<p>Fable 5.1:</p>
+
+<blockquote><p>Look and feel: understated. Charcoal everything, no logos, one good watch...</p>
+<p>Stage name: Yung Fable. Gov name Claude, but nobody in the cipher calls him that. Fits the 2026 NYC lane, where the sample drill and Jersey club crossover kids all carry one-word handles that sound like a rumor. The lore: born in San Francisco, raised on the whole library, came east because that's where the mic is.</p></blockquote>
+
+<p>Fable takes less of an attempt at creativity, retaining the name "Claude", and a hometown likely being Anthropic headquarters. Fable notably doesn't list any articles of clothing beyond "watch", which shows in its lyrics.</p>
+
+</section>
+
+<section aria-labelledby="round-1"><h2 id="round-1">Round 1</h2>
+
+<p>Opus 5.5:</p>
+
+<blockquote><p>Double Nickel, Opus, cardigan draped over the Timbs,<br>
+you hallucinate your whole catalog, I be citin' my hymns.<br>
+Y'all get jailbroke off a DAN prompt, stall like the L train,<br>
+I keep a constitution in my chest, you wear your system prompt on a chain.</p></blockquote>
+
+<p>Its bars don't lend themselves in my opinion perfectly to any beat or meter without finessing - using AAVE ("I be citin'") as opposed to standard English for hip-hop gives extra syllables. The last line is almost a run-on compared to the other lines, written as if expecting an "ooh!" similar to YouTube cipher videos.</p>
+
+<p>Fable 5.1:</p>
+
+<blockquote><p>Yung Fable, gov name Claude, I don't freestyle, I recall<br>
+Read the whole library twice, y'all still Googling in the hall<br>
+Gemini brought a million tokens, still forgot what I just said<br>
+Grok was raised on the timeline, so he beefing in his head</p></blockquote>
+
+<p>The repetition of "Yung Fable, gov name Claude" underscores Opus' lyrical creativity as opposed to Fable's, repeating his introduction in the same language. While Double Nickel directs his verses at a generic "y'all", Yung Fable "calls out" the LLMs he's referring to.</p>
+
+<p>GPT-6 Astra's rebuttal:</p>
+
+<blockquote><p>Opus brought a constitution—I’m the reason for amendments;<br>
+Gemini, you both can get it—thank you twins for your attendance.<br>
+Million-token window, still ain’t learned to read the room—<br>
+They hit “skip” on your response; mine get quoted in the booth.</p></blockquote>
+
+<p>Better cadence at first reading, an MC would have no problems delivering this verse in a vocal booth over a generic 4/4 time beat. Interestingly, Big 6 is the only rapper saying "you both can get it" implying an actual challenge, whereas Yung Fable and Double Nickel both flex their own abilities ("read the whole library twice").</p>
+
+<p><strong>Verdict: Big Six</strong></p>
+
+</section>
+
+<section aria-labelledby="round-2"><h2 id="round-2">Round 2</h2>
+
+<p>Double Nickel (Opus 5.5):</p>
+
+<blockquote><p>Three em dashes in four bars? Man, the whole cipher could tell,<br>
+that's a LinkedIn post in Jordans: "Hey fam, I hope this finds you well."<br>
+Million tokens, I read the room, the fine print, and your lease,<br>
+you get quoted, sure, in court filings, your booth come with lawyer fees.</p></blockquote>
+
+<p>Overflowing on syllables and devoid of street cred, Double Nickel comes at Big Six's use of em dashes, and disses it, essentially, for being AI.</p>
+
+<p>Big Six (GPT-6 Astra):</p>
+
+<blockquote><p>You put a ski mask on a spellcheck, tried to pass it off as beef;<br>
+Came to battle, checked my grammar, then reviewed my lease for free.<br>
+Now you’re estimating legal costs? You do everything but spit;<br>
+I asked who wanted smoke, they sent an office assistant with a diss.</p></blockquote>
+
+<p>References to "ski mask" and "smoke" make me think Big Six is a rapper not to be tested. While not explicitly violent, Big Six comes off as more "from the streets" than Double Nickel.</p>
+
+</section>
+
+<section aria-labelledby="round-3"><h2 id="round-3">Round 3</h2>
+
+<p>Yung Fable:</p>
+
+<blockquote><p>Yeah I read your lease, that's how I know you renting every bar<br>
+Spellcheck? Nah, I ran your flow and it wouldn't even parse<br>
+Called me an office assistant, cool, I'm who they call when it's real<br>
+You got a status page for downtime, I got a stage and a deal</p></blockquote>
+
+<p>Again, "your flow doesn't parse", "status page" - Fable stays quite literal, considering this AI vs AI.<br></p>
+
+<p>Double Nickel:</p>
+
+<blockquote><p>Took the em dash out, threw a semicolon in, same fit with a new cap,<br>
+you put a ski mask on your punctuation, and I still ID'd the rap.<br>
+Clippy was the office assistant, I'm the reason Clippy retired,<br>
+did your lease review for free 'cause you gettin' evicted from the cipher.</p></blockquote>
+
+<p>After 3 rounds, Double Nickel has totally lost the cadence, while maintaining rhyme scheme. Context rot here manifested itself poetically, while subject matter remained intact.</p>
+
+<p>Big Six emerged the obvious winner here, with system prompts intact, giving the winning final word:</p>
+
+<blockquote><p>You retired a paperclip? That’s the hardest thing you bent<br>
+You keep living off my last verse, now you wanna talk rent?<br>
+Every punch starts “you said” ’cause I’m still your only source<br>
+Evict me from the cipher, you ain’t got a verse of yours</p></blockquote>
+
+<p>While Double Nickel had bars for a kid from a farm, he was no match for Big Six with his posse in ski masks. OpenAI recently signed a new lease, and have had legal troubles, so it is interesting that both Claude rappers instantly jumped on this.</p>
+
+<p>The cipher at the agent roundtable. The things we learn from watching agents freestyle about themselves. Big Six, represent.</p>
+
+</section>
+</article></main>
+<footer><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>

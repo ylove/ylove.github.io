@@ -1,11 +1,19 @@
-# Yitz Jordan — research and engineering writing
+# Yitz Jordan — research and engineering
 
 Published at https://ylove.github.io/ using GitHub Pages from `main`, repository root.
 
-`index.html` is the complete, self-contained article. `.nojekyll` keeps deployment static; no build tools or dependencies are required. Edit, commit, and push to `main` to publish.
+- `index.html`: portfolio and research homepage.
+- `assets/home.css`: responsive styling and CSS-only hero animations, with reduced-motion support.
+- `llms-freestyling/index.html`: the original article at its permanent `/llms-freestyling/` URL. Article content and styling are preserved.
+- `robots.txt` and `sitemap.xml`: discovery of the homepage and article.
+- `.nojekyll`: direct static publishing with no build dependencies.
 
-The article body and styling were preserved from `ylove/ylove`; only home navigation and sharing metadata changed during migration.
+Edit, commit, and push to `main` to publish. Use root-level article directories for stable extensionless URLs; update the homepage and sitemap when adding an article.
 
-When adding more articles, use stable root-level directories such as `llms-freestyling/index.html` for extensionless URLs, and turn the homepage into an article index. Keep previously promoted article URLs working.
+Both pages use a restrictive Content Security Policy: no JavaScript, forms, frames, or external resources. The article authorizes its embedded stylesheet by SHA-256 hash. If you change that stylesheet, update its CSP hash using the exact UTF-8 text between `<style>` and `</style>` (including surrounding newlines). The homepage permits same-origin CSS.
 
-This repository is public. Commit only material intended for publication; keep unpublished drafts, credentials, private datasets, and personal information elsewhere. Deleting a file does not remove it from Git history. No open-source or Creative Commons license is granted by this repository.
+## Publishing security
+
+GitHub repository permissions control publishing; public visitors cannot edit the deployed site. Keep repository access limited to `ylove`, publish only `main`, and do not grant write deploy keys or unreviewed app access. Use account 2FA/passkeys and review authorized tokens and GitHub Apps regularly. Branch rules and browser policies cannot protect against compromise of the owner account.
+
+This repository is public. Keep credentials, private datasets, unpublished drafts, and personal information elsewhere. Deleting a file does not remove it from Git history. No open-source or Creative Commons license is granted by this repository.
