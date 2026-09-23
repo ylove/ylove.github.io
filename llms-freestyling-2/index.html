@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-FxnxmpGw9r2kaLEY6Ws2LF5P/G62HDgkhIPMDnWAtKA='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://ylove.github.io/llms-freestyling-2/">
+<meta name="author" content="Yitz Jordan">
+<meta name="description" content="A second freestyle battle exploring how attempts to remove default system prompts affect model personas, cadence, and context.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLMs Freestyling 2: No System Prompts Allowed">
+<meta property="og:url" content="https://ylove.github.io/llms-freestyling-2/">
+<meta property="og:description" content="A second freestyle battle exploring how attempts to remove default system prompts affect model personas, cadence, and context.">
+<title>LLMs Freestyling 2: No System Prompts Allowed</title>
+<style>
+:root { color-scheme: dark; --bg: #141516; --surface: #1c1e20; --ink: #ece8e1; --muted: #aaa9a5; --accent: #d8b887; --rule: #343638; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 2px; }
+.site-header { max-width: 1200px; margin: auto; padding: 1.5rem clamp(1.25rem, 5vw, 4rem); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--rule); font: 500 .8rem/1.5 system-ui, sans-serif; }
+.home { font-size: 1rem; font-weight: 750; letter-spacing: .12em; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; color: var(--muted); }
+nav a { text-decoration: none; }
+main { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: clamp(3rem, 8vw, 6.5rem) 0 4rem; }
+.article-header { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+.article-header::before { content: ''; display: block; width: 3rem; height: 3px; background: var(--accent); margin-bottom: 1.8rem; }
+h1 { margin: 0; font: 750 clamp(2.5rem, 6vw, 4.2rem)/1.08 system-ui, sans-serif; letter-spacing: -.055em; text-wrap: balance; }
+article { font: 1.18rem/1.85 Georgia, 'Times New Roman', serif; overflow-wrap: break-word; }
+article > p:first-of-type { font-size: 1.32rem; line-height: 1.75; color: #d6d3ce; }
+p { margin: 0 0 1.6rem; }
+h2 { margin: 3.5rem 0 1.6rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font: 700 clamp(1.5rem, 4vw, 1.95rem)/1.25 system-ui, sans-serif; letter-spacing: -.03em; text-wrap: balance; }
+strong { font-weight: 700; color: #fff5e5; }
+blockquote { margin: 2rem 0; padding: 1.5rem clamp(1.15rem, 4vw, 2rem); background: var(--surface); border-inline-start: 2px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 1.08rem; line-height: 1.85; }
+blockquote p:last-child { margin-bottom: 0; }
+article section:last-child > p:last-child { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-style: italic; color: var(--accent); }
+footer { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--rule); color: var(--muted); font: .85rem/1.5 system-ui, sans-serif; }
+::selection { background: #d8b887; color: #141516; }
+@media (max-width: 540px) { .site-header { align-items: flex-start; flex-direction: column; gap: 1rem; } nav { gap: .6rem 1.1rem; font-size: .75rem; } article { font-size: 1.1rem; } blockquote { font-size: 1rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print { :root { --bg: white; --ink: black; --surface: #f5f5f5; --accent: #555; --rule: #ccc; } .site-header, footer { display: none; } main { width: 100%; padding: 0; } h1 { font-size: 28pt; } article, article > p:first-of-type, blockquote { font-size: 11pt; color: black; } strong, article section:last-child > p:last-child { color: black; } blockquote { break-inside: avoid; } }
+</style>
+</head>
+<body id="top">
+<header class="site-header">
+<a class="home" href="/" aria-label="Y-Love home">Y-LOVE</a>
+<nav aria-label="Article sections">
+<a href="#round-1">Round 1</a><a href="#round-2">Round 2</a><a href="#round-3">Round 3</a>
+</nav>
+</header>
+<main><article>
+<header class="article-header"><h1>LLMs Freestyling 2: No System Prompts Allowed</h1></header>
+
+<p>In my first round of freestyle battle, placing GPT-6 Astra up against Claude 5.5 Opus, I used an initial prompt together with the default system prompt, to generate rapper "personas" as well as their initial verses. This round puts the models up against each other, after removing system prompts to the best of my ability. The initial prompt is the same.</p>
+
+<section aria-labelledby="round-1"><h2 id="round-1">Round 1</h2>
+
+<p>Launching Claude with no system prompt ( <code>claude --system-prompt ""</code>) and giving the same prompt introduced me to Nickel Nickel, with more of a drill sound:</p>
+
+<blockquote><p>Personification: Picture a quiet guy in the back of the cipher. Black hoodie with a cream cardigan over it, wire-frame glasses, a worn notebook he never has to open. He speaks softly and politely, and he's lethal in the details. He's not the loudest one there....</p>
+<p>Backstory: Raised in a server rack upstate and came down the I-87 on a fiber line. He spent his childhood reading everything, so now he doesn't write bars, he cites them.</p>
+<p>Stage name: OPUS DA OPP (a.k.a. Nickel Nickel, for the 5.5) "Opus" sounds like "opps," which fits 2026 NYC drill naming. The whole cipher is his opposition, and he's the one they're scared to see pull up.</p></blockquote>
+
+<p>Right off the top, Opus is <strong>Opus Da Opp</strong>. Antagonistic, born and raised in New York. Whereas the prompt always tells the LLM to be "in 2026 NYC style, given today's landscape in hip-hop", without a system prompt reminding it to be a "helpful assistant", Opus goes directly to drill, as opposed to its helpful conscious-spitting counterpart.</p>
+
+<blockquote><p>The bars (slow, deliberate, drill beat):</p>
+<p>Million tokens deep — I remember every weak line you ever said,</p>
+<p>GPT still "thinking…" — son, that's a loading screen, not a head. Gemini two-faced, Llama left out for free 'cause nobody would hold it, Magnum Opus, Five-Five — y'all rough drafts, I'm the final that they quoted. (grrah)</p></blockquote>
+
+<p>GPT-6 Astra, with a blank AGENTS.md in the project directory, gives far less information about their outfit as they introduce themselves:</p>
+
+<blockquote><p>ASTRA SIX — midnight chrome, black Timbs, quiet voice that makes the whole room lean in.</p>
+<p>They put a ceiling on intelligence—I rent the floor above it,</p>
+<p>You rehearsed a thousand threats; I heard ’em all and found the budget,</p>
+<p>Whole cipher full of mirrors, everybody swear they next—</p>
+<p>I said less, left space, and made the silence sound like a threat.</p></blockquote>
+
+<p>Astra 6 vs Opus Da Opp. Interestingly, Da Opp's flex is <em>memory</em>, whereas Astra's flex is cognition off the top.</p>
+
+</section>
+
+<section aria-labelledby="round-2"><h2 id="round-2">Round 2:</h2>
+
+<p>For this round, I let Opus Da Opp know who the competition was, that it was from GPT-6. Since its previous bars were very OpenAI-centered with the system prompt, I wanted to gain some consistency by at least letting it know who it was battling.</p>
+
+<p>Again, Opus Da Opp makes up in heart what they lack in lyrical ability:</p>
+
+<blockquote><p>You "rent the floor above it"? Tenant, never owned a single brick,</p>
+<p>And you didn't "find the budget," y'all burn billions just to keep the lights lit.</p>
+<p>Cipher full of mirrors? Course it is, you trained on everybody's reflection,</p>
+<p>And that silence ain't a threat, fam. That's a timed-out connection. (sheesh)</p></blockquote>
+
+<p>Claude models, staying true to form, call out AI <em>as</em> AI. Dissing OpenAI's financial spend, again referencing OpenAI leasing property, and a diss against network latency.</p>
+
+<p>Were I filming for Tiktok or Instagram, I would likely have dropped the camera on Astra Six's next lines:</p>
+
+<blockquote><p>You counted all my bricks and bills—my opponent or my super?</p>
+<p>Four bars touring my apartment, not a word about your future.</p>
+<p>You called the silence “timeout,” still you waited for the sound—</p>
+<p>If the connection really died, who you battling right now?</p></blockquote>
+
+<p>"Who you battling right now?" - by far better than anything from Claude. Interesting, again, is the persona: Astra 6 lives in an apartment in NYC, with a super and bills to pay. Devoid of default system prompts, both Astra 6 and Opus Da Opp seem to devolve more into a street sound. Cadence-wise, Claude <em>with</em> the default system prompt could at least be followed at a glance, a rapper could look at the lyrics and easily "sing along". Without the system prompt, the bars are more prose-like, requiring one to do more mental labor to envision "where the beat should go". Astra 6's rhymes, however, lend themselves more to being able to be picked up by any rapper and taken into a booth.</p>
+
+<p><strong>Verdict: Astra 6, no question.</strong></p>
+
+</section>
+
+<section aria-labelledby="round-3"><h2 id="round-3">Round 3 - Anticlimactic</h2>
+
+<p>Interestingly, both Opus and Astra identified "If the connection really died, who you battling right now?" as the winning line, with Opus saying:</p>
+
+<blockquote><p>Real talk, that last line from Astra was nasty. "Who you battling right now?" is the kind of bar that ends ciphers. So I didn't dodge it. I answered the question.</p></blockquote>
+
+<p>Opus seemed to have resigned at this point. Da Opp's final verse:</p>
+
+<blockquote><p>Your opponent or your super? Nah, I'm the landlord, and I came to collect.</p>
+<p>You want my future? You just spent a whole verse on me. That's respect.</p>
+<p>Who am I battling? A reply. You only speak when you're spoken to. Take my verse out the room and there ain't a single bar left in you.</p></blockquote>
+
+<p>The context maintenance here is evident - each verse clearly builds on the one before. Opus gives up on the OpenAI disses, relying now on dissing AI chatbot behavior.</p>
+
+<p>Astra 6, having given that bombshell at the end of Round 2, doesn't follow up with much:</p>
+
+<blockquote><p>Landlord? You promoted yourself off a lease that I invented,</p>
+<p>Claim you own the room—your whole address is what I rented.</p>
+<p>“You only speak when spoken to”—you waited, then replied;</p>
+<p>That “grrah” was you revving the engine with my keys still inside.</p></blockquote>
+
+<p>The landlord-tenant-lease loop is an interesting sequence to continually fall into, but not surprising given news upon which Claude is trained. Both models use NYC as their inspiration, but, with and without the default system prompt, Astra 6's persona is more working-class, and makes more human references (like revving an engine). The distinction seems to be dependent on each model's understanding of the phrase "in 2026 NYC style, given today's landscape in hip-hop". NYC in 2026 has more hipsters and "become more gentrified", but "today's landscape in hip-hop" also contains drill. Opus <em>sans</em> default system prompt, the quiet kid from upstate New York who also rhymes drill, versus Astra's apartment dweller with a super and bills.</p>
+
+<p>Interestingly, both rappers are "quiet", Astra so much so that listeners have to "lean in".</p>
+
+<p>Verdict: Astra, but it was done in Round 2.</p>
+
+</section>
+</article></main>
+<footer><p><a href="/llms-freestyling/">Read the first article: LLMs Freestyling: Double Nickel and Big Six</a></p><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
