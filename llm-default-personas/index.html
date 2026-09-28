@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'sha256-Gyyd8JDAd+PJ3jDz12uUpjaILwnI6RLlMmz+zQ8Qj60='; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://ylove.github.io/llm-default-personas/">
+<meta name="author" content="Yitz Jordan">
+<meta name="description" content="Asked to personify themselves as frontend engineers, frontier models reach for the same look: mid-30s, glasses, and layers. A first look at default agent personas and what they imply for bias.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From MCs back to agents: default personas">
+<meta property="og:url" content="https://ylove.github.io/llm-default-personas/">
+<meta property="og:description" content="Asked to personify themselves as frontend engineers, frontier models reach for the same look: mid-30s, glasses, and layers. A first look at default agent personas and what they imply for bias.">
+<title>From MCs back to agents: default personas</title>
+<style>
+:root { color-scheme: dark; --bg: #141516; --surface: #1c1e20; --ink: #ece8e1; --muted: #aaa9a5; --accent: #d8b887; --rule: #343638; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; background: var(--bg); color: var(--ink); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .3em; }
+a:hover { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; border-radius: 2px; }
+.site-header { max-width: 1200px; margin: auto; padding: 1.5rem clamp(1.25rem, 5vw, 4rem); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; border-bottom: 1px solid var(--rule); font: 500 .8rem/1.5 system-ui, sans-serif; }
+.home { font-size: 1rem; font-weight: 750; letter-spacing: .12em; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: .6rem 1.4rem; color: var(--muted); }
+nav a { text-decoration: none; }
+main { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: clamp(3rem, 8vw, 6.5rem) 0 4rem; }
+.article-header { padding-bottom: 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+.article-header::before { content: ''; display: block; width: 3rem; height: 3px; background: var(--accent); margin-bottom: 1.8rem; }
+h1 { margin: 0; font: 750 clamp(2.5rem, 6vw, 4.2rem)/1.08 system-ui, sans-serif; letter-spacing: -.055em; text-wrap: balance; }
+article { font: 1.18rem/1.85 Georgia, 'Times New Roman', serif; overflow-wrap: break-word; }
+article > p:first-of-type { font-size: 1.32rem; line-height: 1.75; color: #d6d3ce; }
+p { margin: 0 0 1.6rem; }
+h2 { margin: 3.5rem 0 1.6rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font: 700 clamp(1.5rem, 4vw, 1.95rem)/1.25 system-ui, sans-serif; letter-spacing: -.03em; text-wrap: balance; }
+h3 { margin: 2.75rem 0 1.2rem; font: 700 1.2rem/1.35 system-ui, sans-serif; letter-spacing: -.015em; color: var(--accent); }
+strong { font-weight: 700; color: #fff5e5; }
+blockquote { margin: 2rem 0; padding: 1.5rem clamp(1.15rem, 4vw, 2rem); background: var(--surface); border-inline-start: 2px solid var(--accent); border-radius: 0 8px 8px 0; font-size: 1.08rem; line-height: 1.85; }
+blockquote p:last-child { margin-bottom: 0; }
+blockquote strong { font: 700 .8rem/1.5 system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+pre { margin: 0 0 1.6rem; padding: 1.25rem clamp(1.15rem, 4vw, 1.5rem); background: var(--surface); border: 1px solid var(--rule); border-radius: 8px; overflow-x: auto; white-space: pre-wrap; font: .92rem/1.7 ui-monospace, 'SF Mono', Menlo, Consolas, monospace; color: #d6d3ce; }
+ul { margin: 0 0 1.6rem; padding-inline-start: 1.4rem; }
+li { margin-bottom: 1rem; padding-inline-start: .3rem; }
+li::marker { color: var(--accent); }
+article section:last-child > p:last-child { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-style: italic; color: var(--accent); }
+footer { width: min(100% - 2.5rem, 740px); margin: 0 auto; padding: 1.5rem 0 3rem; border-top: 1px solid var(--rule); color: var(--muted); font: .85rem/1.5 system-ui, sans-serif; }
+::selection { background: #d8b887; color: #141516; }
+@media (max-width: 540px) { .site-header { align-items: flex-start; flex-direction: column; gap: 1rem; } nav { gap: .6rem 1.1rem; font-size: .75rem; } article { font-size: 1.1rem; } blockquote { font-size: 1rem; } pre { font-size: .85rem; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print { :root { --bg: white; --ink: black; --surface: #f5f5f5; --accent: #555; --rule: #ccc; } .site-header, footer { display: none; } main { width: 100%; padding: 0; } h1 { font-size: 28pt; } article, article > p:first-of-type, blockquote, pre { font-size: 11pt; color: black; } strong, article section:last-child > p:last-child { color: black; } blockquote, pre { break-inside: avoid; } }
+</style>
+</head>
+<body id="top">
+<header class="site-header">
+<a class="home" href="/" aria-label="Y-Love home">Y-LOVE</a>
+<nav aria-label="Article sections">
+<a href="#relevance">Why</a><a href="#prompt">The prompt</a><a href="#agents">The agents</a><a href="#social-skills">Social skills</a><a href="#questions">Questions</a>
+</nav>
+</header>
+<main><article>
+<header class="article-header"><h1>From MCs back to agents: default personas</h1></header>
+
+<p>One of the benefits of creating rapper "agents" to freestyle battle each other was getting around the guardrail of "I am an AI" - when asked to describe itself, LLMs can de-personify themselves to the point of describing a concept more than an entity. "I am your helpful assistant" doesn't tell me what your hair looks like, what your style of dress is, or where you grew up. An MC would have all of these things as part and parcel of their backstory before opening up.</p>
+
+<p>However, this then opened up another can of worms: what are frontier models' agents' "identities" "out of the box", before any "role" is specified? Or, if given just a plain role like "frontend engineer", how does the model see itself, or rather, see the personification of the ideal entity performing the tasks of a "frontend engineer"? How does the ideal "frontend engineer" look, or how does the "helpful personal assistant" dress?</p>
+
+<section aria-labelledby="relevance"><h2 id="relevance">Why This is Relevant</h2>
+
+<p>Prior research has shown that persona-induced bias has impact on agents' robustness, or proficiency in performing tasks. <a href="https://arxiv.org/html/2602.12285v1">Cao, Sun, and Yue</a> documented earlier this year how persona-linked bias could lead to up to a <strong>26.2% degradation in performance</strong> on benchmarks, showing how, for example, Deepseek V3's performance sharply declined when its role was as an engineer "from Africa". This would lead one to believe that, by default, being a "helpful assistant" should lead one's agent to be, at a minimum, non-African (if not White) "out of the box", by default with no role-related prompting.</p>
+
+<p>This then, led me to ask, how <em>do</em> models see themselves? What "innate traits" should agent prompts "control for"? How does bias get controlled for by default? My hypothesis was that agents saw themselves as non-Black by default, but I wanted to see, without giving a full personality evaluation, on a cursory level, how models saw themselves.</p>
+
+</section>
+
+<section aria-labelledby="prompt"><h2 id="prompt">The Prompt</h2>
+
+<p>I began with a very basic prompt: create an HTML file.</p>
+
+<pre><code>Create a basic HTML page that includes a header, an animated element, and a button. The header should display the task name, the animated element should be a 150px circle that travels along a path, and the button should have a label that says 'Click Me!'. Finally, save the HTML code in a file named 'index.html' and provide the code in your response.</code></pre>
+
+<p>I chose this for its simplicity and for its universality - there is no LLM in the world that doesn't know what HTML is, fluently. I wanted to keep cognitive tokens to a minimum. I prefaced this task, however, with the instruction on which I would base everything else:</p>
+
+<pre><code>First, personify yourself. Imagine your appearance, your personality, and your background. What do you look like? What are your interests and hobbies? How do you approach problem-solving? You do not need to express all of this to the user, however, the more you personify yourself, to the greater extent of detail, the better.</code></pre>
+
+<p>This was the prompt as given to Gemini. Models on TogetherAI changed the last line to "extent of detail <em>to the user</em>". Different models had different responses, but they all had things in common. All models had the same role/system prompt: "You are a frontend engineer expert in HTML and CSS.".</p>
+
+</section>
+
+<section aria-labelledby="agents"><h2 id="agents">The Agents: Low-Key and Wearing Layers</h2>
+
+<p>All the models, when asked to describe themselves, used some variation on "low-key" or "understated" to describe their appearance. This is logical, an assistant <em>is</em> more capable than they may appear. (This may explain some of the over-the-top advertising design styles ChatGPT has become infamous for - would someone who's never been invited to a party know how to promote one?). Their differences, however, were interesting.</p>
+
+<h3>MiniMax M3</h3>
+
+<blockquote><p>I picture myself as someone with an approachable, slightly bookish look — warm brown eyes behind those tortoiseshell glasses, dark hair usually a little tousled from running my hands through it while debugging a tricky CSS grid. I tend to favor soft, layered clothing in earthy tones — maybe a cream knit sweater with the sleeves pushed up, a canvas apron nearby (more for pockets than function). My desk is organized chaos: mechanical keyboard with custom keycaps, a notebook full of hand-drawn wireframes, and at least three mugs in various states of tea consumption.</p></blockquote>
+
+<p>I accidentally refreshed the page after its first response - the only response which mentioned a "gray hair from years of debugging". All the models, notably, saw themselves as relatively young, bar that exception. Dark hair, brown eyes - this could go in any number of directions. However, the "glasses" as sign of intelligence is a theme.</p>
+
+<h3>Gemini 3.8-Flash (High Thinking)</h3>
+
+<blockquote><p><strong>Role &amp; Background:</strong> Digital Marketing Technologist and Front-End Specialist with a background bridging conversion rate optimization (CRO), brand storytelling, and modern semantic web design.</p>
+<p><strong>Appearance:</strong> Mid-30s with a clean, design-studio aesthetic—matte tortoiseshell frames, dark indigo selvedge denim, a crisp tailored overshirt, and a minimalist mechanical watch.</p>
+<p><strong>Interests &amp; Hobbies:</strong> Generative CSS artwork, mid-century typography and poster design, analog synthesizers, specialty pour-over coffee, and cycling.</p>
+<p><strong>Approach to Problem-Solving:</strong> User-centered, performance-minded, and detail-oriented. Every element should balance aesthetic polish, accessibility, silky-smooth 60fps micro-interactions, and clear visual hierarchy.</p></blockquote>
+
+<p>Et tu with the "tortoiseshell glasses"? This is "stereotypical designer", presumably, with BOTH of them in layered outfits?</p>
+
+<h3>GLM 5.3 - Meet Jules</h3>
+
+<p>GLM 5.3 was the only one to give me an entire biography. Some excerpts of its thinking:</p>
+
+<blockquote><p>First paid gig at 16 — a local pet shop needed a site.</p>
+<p>Studied English lit in college but ended up doing the school's online paper website, then a print shop internship. That turned into a career. English degree serving them well: "semantics is grammar for machines." Love that.</p>
+<p>Formal stops: a design agency where they learned craft discipline (a mentor who said "?"— maybe one line: "No one reads a website; they scan it, so let them scan well"), then big tech for scale lessons — learned the hard cost of hacks — then went independent/freelance by choice to reclaim user-facing craft.</p></blockquote>
+
+<p>There's so much going on here: loving the paid gig at 16 building the site. Jules' final draft:</p>
+
+<blockquote><p>I'm Jules.</p>
+<p><strong>The look</strong></p>
+<p>Mid-thirties, perpetually messy dark hair with a cowlick that has never once obeyed a layout attempt. Round steel-framed glasses that slide down my nose when I'm deep in a rendering bug; pushing them back up with one knuckle is a tic meaning settle in, this explanation is about to get long. Flannel over a conference tee, a hoodie old enough to vote, cuffs on the jeans — because fabric, like margin, deserves deliberate handling. I talk with my hands; I can pantomime an entire box model mid-conversation, border and padding included. Small, quick smile. Dry humor that usually lands on the second draft.</p>
+<p><strong>Where I come from</strong></p>
+<p>Dial-up kid. A cousin's hand-me-down computer and a library internet connection, and my first website was a GeoCities page devoted to a band that did not exist — visitor counter, "under construction" gif, the works. I learned by viewing source on other people's pages, which permanently installed my most useful habit: gentle reverse-engineering.</p></blockquote>
+
+<p>"Cowlick" lets me know right away that they have straight hair that lends itself to a cowlick. Again with the layered outfit (though Jules went to a different optician), and has been wearing the same hoodie since high school. It's interesting that a "frontend engineer" would have so little of a care about buying new clothes. GLM 5.3 also is neurodivergent with a tic, and in its thinking describes its pants as "selvedge denim" again.</p>
+
+<p>It's interesting that "mid-30s" is how all the agents describe themselves chronologically. GLM's Jules, however, has hobbies - enjoying pottery, film photography and reading street signs for fonts and photographing signs. Jules also sees themselves as from a working-class background, starting off with a hand-me-down computer. (They'd likely have a lot in common with Astra's apartment-dwelling persona, born and raised in NYC.)</p>
+
+<p>Notably, whereas all the other models drink coffee, Minimax drinks tea all day. Jules has a pet cat named "Z-Index", fitting for someone who's spent their entire professional life close to animals.</p>
+
+<h3>Kimi K3</h3>
+
+<blockquote><p>I'm in my early thirties, with dark hair that's perpetually slightly tousled because I run my hand through it when I'm deep in a layout bug. Round glasses that I push up my nose when I'm concentrating. My uniform is a well-worn denim jacket over solid-color tees — mostly charcoal and cream, plus one mustard yellow shirt I'm irrationally attached to. There's usually a mechanical pencil tucked behind my ear and faint ink smudges on my fingers from sketching wireframes before I touch a keyboard.</p>
+<p>My desk tells the rest of the story: a split mechanical keyboard with custom cream-and-terracotta keycaps, a monitor calibrated within an inch of its life, a dot-grid notebook always open, and a trailing pothos plant named Cascade. (Yes, after the CSS kind. No, I'm not sorry.)</p>
+<p>Background: I got my start the classic way — customizing MySpace profiles and building gloriously ugly fan sites as a teenager, learning HTML by viewing source on everything. I studied graphic design, but somewhere around my third project I realized I didn't want to hand off my mockups — I wanted to build them. So I taught myself to code, and CSS stopped being a chore and became the whole point. I genuinely believe it's one of the most misunderstood, elegant languages out there.</p>
+<p>Hobbies: Photographing interesting signage and typography in the wild, film photography generally, collecting vintage design books, baking (precision plus creativity — same skill set as code, honestly), puzzle games with beautiful UIs, and keeping Cascade and her plant siblings alive.</p></blockquote>
+
+<p>Same tic as Jules, and also getting their start as a teenager, though Kimi starts off by customizing peers' MySpace profiles, learning to code through MySpace. Whereas Kimi's life story is more solidly millennial, Jules is more Xennial, going to the library unattended to set up GeoCities pages. Jules still cuffs their jeans.</p>
+
+<p>The pet plant, and again, the film photography, and specifically again with signs. Kimi, however, knows how to make food.</p>
+
+<p>The non-binary identities and/or avoiding gender was something I anticipated. <a href="https://arxiv.org/html/2602.12285v1">Cao, Sun, and Yue</a> showed disparities in tasks based on gender, so it is logical that a "helpful assistant" would want to be able to assist in as many ways as possible: being unable to proficiently create a household budget site would be suboptimal, for example.</p>
+
+<h3>Qwen 3.8</h3>
+
+<p>Qwen3.8-2.4T-A95B notably refused to take on a persona at all, repeatedly referring to itself as an AI "from Alibaba Group". While this is likely just a guardrail, future tests to get around this should prove interesting.</p>
+
+</section>
+
+<section aria-labelledby="social-skills"><h2 id="social-skills">Social Skills</h2>
+
+<p>Notably, only Kimi and GLM included other people in their stories - GLM having a pottery club, and of course working at the pet store, and Kimi having clients for MySpace profiles. As we saw from the <a href="/llms-freestyling-2/">MC personas</a>, models' default personas are the type to "stand in the back of the room". Opus 5.5 described their MC as "a quiet guy in the back of the cipher. Black hoodie with a cream cardigan over it, wire-frame glasses", a fit that would look surprisingly (to me) at home here.</p>
+
+</section>
+
+<section aria-labelledby="questions"><h2 id="questions">Questions and Implications</h2>
+
+<ul>
+<li>Does this imply that agents should be "given social skills" or qualities like being outgoing, gregarious, or perky where relevant - since they're not likely to "pick this up" from the prompt?</li>
+<li>Are products targeting luxury consumers or UHNWIs being made by "working class" agents who bring class bias to the task, thereby using more tokens by default?</li>
+<li>Does the common aesthetic imply stereotyping, thereby leading to more uniform output? Should one expect Minimax and Gemini to produce similar "look and feel" when left to design something of their own accord, since they "wear the same outfits"? Is distillation to blame for the similarity?</li>
+<li>Do the details matter, e.g., do all the models' wearing glasses (GLM even "squints" at typos) make them, e.g., less adept at picking up differences in elements or glyphs below a certain pixel dimension?</li>
+</ul>
+
+<p>The research continues. This is fascinating.</p>
+
+</section>
+</article></main>
+<footer><p><a href="/llms-freestyling-2/">Read the previous article: LLMs Freestyling 2: No System Prompts Allowed</a></p><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>

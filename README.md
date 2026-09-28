@@ -5,6 +5,7 @@ Published at https://ylove.github.io/ using GitHub Pages from `main`, repository
 - `index.html`: portfolio and research homepage.
 - `assets/home.css`: responsive styling and CSS-only hero animations, with reduced-motion support.
 - `llms-freestyling/index.html`: the original article at its permanent `/llms-freestyling/` URL. Article content and styling are preserved.
+- `llms-freestyling-2/index.html` and `llm-default-personas/index.html`: later articles, using the same self-contained article styling.
 - `robots.txt` and `sitemap.xml`: discovery of the homepage and article.
 - `.nojekyll`: direct static publishing with no build dependencies.
 
