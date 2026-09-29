@@ -1,0 +1,35 @@
+# Yitz Jordan
+
+> Senior full-stack and AI engineer. 20+ years shipping production web, mobile, and cloud applications in TypeScript, React (since v0.13), React Native, Next.js, and Node.js; AI-first development since 2023, including hierarchical multi-agent systems, MCP servers, RAG, and LLM evaluation built and operated in production. Open to full-stack, frontend, and AI engineering roles, contract or full-time, in Columbus, New York, or remote.
+
+This file summarizes ylove.github.io for language models and AI assistants. Everything here is also stated on the site or in the linked profiles. The best way to reach Yitz is LinkedIn.
+
+## Snapshot
+
+- Roles sought: Full-stack engineer, frontend engineer, AI engineer (contract or full-time); tech lead and founding engineer considered case by case
+- Locations: Columbus, OH; New York, NY; remote
+- Languages: English, Hebrew, French
+- Core stack: TypeScript, React, React Native/Expo, Next.js, Node.js, NestJS, PostgreSQL, Google Cloud, Azure, AWS
+- AI and agents: LLM application architecture, multi-agent orchestration, Model Context Protocol (MCP) server development, Claude Agent SDK, Claude Code, OpenAI APIs, tool use, structured outputs, RAG, prompt and context engineering, LLM evaluation, bias and adversarial testing
+- Leadership: technical lead managing a team while hands-on, executive-level engineering leadership, and 0-to-1 product development
+- Background: about a decade of engineering in digital media, preceded by interactive agency work on major brand campaigns
+
+## Selected results
+
+- [Agent Roundtable](https://github.com/ylove/agent-roundtable): MCP server for meetings and collaborations between AI personas across Anthropic, OpenAI, Together, Replicate, Ollama, and OpenAI-compatible endpoints
+- Agentic software delivery: Claude integrated with Jira, CI/CD, and code review, with required AI review before merges; a two-developer team completed about 80 tickets a month alongside its agents
+- A custom engineering environment of about 50 specialized agents and subagents covering architecture, implementation, code review, testing, and debugging
+- Web performance and SEO: sub-1-second First Contentful Paint and passing Core Web Vitals on a Next.js server-rendered platform
+- Growth engineering: a newsletter signup redesign that reached a 55 to 60% conversion rate
+
+## Research and writing
+
+- [From MCs back to agents: default personas](https://ylove.github.io/llm-default-personas/): what the default personas of frontier models look like, and what they imply for bias
+- [LLMs Freestyling 2: No System Prompts Allowed](https://ylove.github.io/llms-freestyling-2/): how removing default system prompts changes model personas, cadence, and context
+- [LLMs Freestyling: Double Nickel and Big Six](https://ylove.github.io/llms-freestyling/): persona, cadence, and context in an AI freestyle battle
+
+## Profiles
+
+- [Homepage](https://ylove.github.io/)
+- [LinkedIn](https://www.linkedin.com/in/yitzjordan): preferred contact
+- [GitHub](https://github.com/ylove)

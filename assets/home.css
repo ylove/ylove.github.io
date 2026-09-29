@@ -94,7 +94,6 @@ dd { margin: 0; color: var(--muted); font-size: .78rem; }
 .contact p:last-child { color: var(--muted); font-size: .85rem; margin-top: 1.3rem; }
 .contact .button { flex-shrink: 0; }
 .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: 1.7rem; border-top: 1px solid var(--line); font-size: .75rem; }
-.footer-alias { color: var(--muted); padding-left: .4rem; }
 .site-footer nav { font-size: .75rem; }
 .back-top { color: var(--muted); font-size: .7rem; text-decoration: none; }
 @media (prefers-reduced-motion: no-preference) {
